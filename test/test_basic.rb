@@ -122,6 +122,10 @@ mso-bidi-language:#0400;}
   def test_fragment_with_no_tags
     assert_equal "This fragment has no tags.", Dryopteris.sanitize("This fragment has no tags.")
   end
+  
+  def test_fragment_with_entities
+    assert_equal '<p> this is < that "&" the other > boo\'ya</p>', Dryopteris.sanitize("<p> this is &lt; that &quot;&amp;&quot; the other &gt; boo&apos;ya</p>")
+  end
 
   def test_fragment_in_p_tag
     assert_equal "<p>This fragment is in a p.</p>", Dryopteris.sanitize("<p>This fragment is in a p.</p>")
